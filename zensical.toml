@@ -34,7 +34,7 @@ site_url = "https://deploykit.nattho.com/docs"
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2026 The authors
+Copyright &copy; 2026 Nathanael
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
@@ -44,10 +44,10 @@ Copyright &copy; 2026 The authors
 # can be defined using TOML syntax.
 #
 # Read more: https://zensical.org/docs/setup/navigation/
-# nav = [
-#   { "Get started" = "index.md" },
-#   { "Markdown in 5min" = "markdown.md" },
-# ]
+nav = [
+  { "Get started" = "index.md" },
+  { "Markdown in 5min" = "markdown.md" },
+]
 
 # With the "extra_css" option you can add your own CSS styling to customize
 # your Zensical project according to your needs. You can add any number of
