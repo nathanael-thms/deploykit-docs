@@ -1,1 +1,3 @@
 deploykit-docs-env/
+.cache/
+site/
