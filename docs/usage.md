@@ -19,9 +19,9 @@ Available flags for the `php-deploykit` command:
 | `first` | Same as selecting option 4. Use this for the initial deployment; it prevents the app-down command from being run in classical mode. Does not require user interaction but oversight is recommended. |
 | `cleanup` | Same as selecting option 5 (symlink only). Cleans up old releases as described in [Cleaning up old releases](#cleaning-up-old-releases). Can be followed by `-<n>` (for example `--cleanup-10`) to keep the latest `n` releases. Requires user interaction if not followed by an integer. |
 | `logs` | Same as selecting option 6. Displays all the deployments, red if failed and green if successful. Then prompts for you to select a deployment to view logs for. If all you wanted to do is check if it was successful, press Ctrl+C after viewing the logs. |
-| `webhook-listener` | Starts the webhook listener. Meant to be executed by a systemd service. Starts the webhook listener, which listens for incoming webhook requests and triggers deployments when a request is received. It calls `webhook_listener/webhook_listener.sh`. |
-| `webhook-service-install` | Installs the webhook listener as a systemd service. |
-| `webhook-service-uninstall` | Uninstalls the webhook listener systemd service. It calls `utilities/webhook_listener_service_uninstall.sh`, which stops the service, disables it from starting on boot, and removes the service file. |
+| `webhook-listener` | Starts the webhook listener. Meant to be executed by a systemd service. Starts the webhook listener, which listens for incoming webhook requests and triggers deployments when a request is received. It calls `webhook_listener/webhook_listener.sh`. No human interaction needed. |
+| `webhook-service-install` | Installs the webhook listener as a systemd service. Human interaction needed. |
+| `webhook-service-uninstall` | Uninstalls the webhook listener systemd service. It calls `utilities/webhook_listener_service_uninstall.sh`, which stops the service, disables it from starting on boot, and removes the service file. Human interaction needed. |
 | `help` | Prints the available flags. |
 
 Only one option may be specified at a time. Example:
