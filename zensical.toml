@@ -47,7 +47,8 @@ Copyright &copy; 2026 Nathanael
 nav = [
   { "Introduction" = "index.md" },
   { "Install/Update" = "installation.md" },
-  { "Configuration" = "configuration.md" }
+  { "Configuration" = "configuration.md" },
+  { "Usage" = "usage.md" }
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
