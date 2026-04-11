@@ -31,3 +31,7 @@ In this method, a new directory is made at `APP_DIR`/releases/timestamp, then gi
 - Automatic cleanup of old releases, keeping the latest releases specified with `KEEP_RELEASES` in .env(if enabled)
 - Easy configuration with .env file
 - Open source and free to use
+
+## Supported frameworks
+
+php-deploykit currently only supports Laravel, but support for other frameworks will be added in the future. If you want to contribute support for your favorite framework, feel free to open a pull request.
