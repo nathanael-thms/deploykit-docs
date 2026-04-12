@@ -51,7 +51,8 @@ nav = [
   { "Usage" = "usage.md" },
   { "Logging" = "logging.md" },
   { "Webhook Listener" = "webhook.md" },
-  { "Utilities" = "utilities.md" }
+  { "Utilities" = "utilities.md" },
+  { "License" = "license.md" }
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
