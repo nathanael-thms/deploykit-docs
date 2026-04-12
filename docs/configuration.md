@@ -61,11 +61,11 @@ cp .env.example .env
 
 - `WEBHOOK_LOG_FILE`: Specifies where to store logs of incoming webhook requests. This can be omitted if `LOG_WEBHOOK="false"`; if present but `LOG_WEBHOOK="false"`, it will be ignored. Ensure you have permissions to write to the specified file; ensure the file exists.
 
-- `GITHUB_REPORTING`: A `true`/`false` variable that specifies whether to report deployment status back to GitHub when using the webhook listener with GitHub. If `true`, the script reports deployment status back to GitHub, which can be viewed by checking the repository's commits, described in [reporting deployment status back to GitHub](#reporting-deployment-status-back-to-github). This is not used for other providers.
+- `GITHUB_REPORTING`: A `true`/`false` variable that specifies whether to report deployment status back to GitHub when using the webhook listener with GitHub. If `true`, the script reports deployment status back to GitHub, which can be viewed by checking the repository's commits, described in [reporting deployment status back to GitHub](webhook.md#reporting-deployment-status-back-to-github). This is not used for other providers.
 
-- `GITHUB_TOKEN`: If `GITHUB_REPORTING="true"`, this variable is used to specify a GitHub token with permissions to create deployment statuses in the repository. The script uses this token to authenticate with the GitHub API when reporting deployment status. Also described in [reporting deployment status back to GitHub](#reporting-deployment-status-back-to-github).
+- `GITHUB_TOKEN`: If `GITHUB_REPORTING="true"`, this variable is used to specify a GitHub token with permissions to create deployment statuses in the repository. The script uses this token to authenticate with the GitHub API when reporting deployment status. Also described in [reporting deployment status back to GitHub](webhook.md#reporting-deployment-status-back-to-github).
 
-- `GITHUB_REPO_OWNER` and `GITHUB_REPO_NAME`: If `GITHUB_REPORTING="true"`, these variables are used to specify the owner and name of the GitHub repository, respectively. The script uses these variables to identify which repository to report deployment status for when using the GitHub API. Also described in [reporting deployment status back to GitHub](#reporting-deployment-status-back-to-github)
+- `GITHUB_REPO_OWNER` and `GITHUB_REPO_NAME`: If `GITHUB_REPORTING="true"`, these variables are used to specify the owner and name of the GitHub repository, respectively. The script uses these variables to identify which repository to report deployment status for when using the GitHub API. Also described in [reporting deployment status back to GitHub](webhook.md#reporting-deployment-status-back-to-github)
 
 Values must be surrounded by double quotes (`""`) so the scripts parse them correctly.
 
