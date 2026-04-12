@@ -197,7 +197,7 @@ php-deploykit is licensed under the Apache 2.0 License. See below or https://www
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [2025-2026] [Nathanael Thomas]
+   Copyright 2025-2026 Nathanael Thomas
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
