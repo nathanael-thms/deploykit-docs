@@ -19,6 +19,10 @@ This really only exists so you can drop your code into the app directory, run yo
 
 In this method, a new directory is made at `APP_DIR`/releases/timestamp, then git will clone the repository specified with `SYMLINK_DEPLOYMENT_GIT_PATH` in .env to a depth of 1 into it, then change into the new directory and run all the necessary steps to prepare the app for deployment. If everything goes well, the `APP_DIR`/current symlink will be updated to point to the new release. This method is recommended because it allows for zero downtime deployments and easy rollbacks in case of failure.
 
+### Persistent files/directories
+
+By default, only the files in the repository are deployed, but you can make other files or directories persistent across deployments by moving them to `APP_DIR`/shared and creating a symlink to them in the deployment script. For example, if you want to make the `storage` directory persistent, you would move it to `APP_DIR`/shared/storage and redeploy the application to symlink it automatically.
+
 ## Features
 
 - Zero downtime deployments (symlink method)

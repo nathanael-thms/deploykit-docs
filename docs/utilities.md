@@ -15,7 +15,7 @@ Migration to symlink deployment can be complicated. This project includes a scri
 !!! danger
     Read the script prompts carefully; failure to follow instructions may pose a security risk.
 
-To make other files persistent across deployments, move them to APP_DIR/shared and redeploy.
+To make other files persistent across deployments, move them to APP_DIR/shared and redeploy, as described in the [Persistent files/directories](index.md#persistent-filesdirectories) section of the introduction documentation.
 
 ## Revert to a previous deployment
 
