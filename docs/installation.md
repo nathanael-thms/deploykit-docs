@@ -20,6 +20,17 @@ All scripts use /bin/bash and /usr/bin/env python3; make sure they are present
 
 ## Installation steps
 
+### Automatic installation (recommended)
+
+The recommended installation method is to use the install.sh script, which will automatically install php-deploykit and create a symlink to run.sh in /usr/local/bin. This allows you to run php-deploykit from anywhere without having to specify the full path to the run.sh script. To install, run the following command from the parent directory of where you want to install php-deploykit:
+!!! note
+    This installer is interactive and needs user input. Runs sudo scripts. May prompt for password. You may open install.sh in the GitHub repository to review it before running the installer if you have any concerns.
+```bash
+curl -sSL https://raw.githubusercontent.com/nathanael-thms/php-deploykit/refs/heads/main/install.sh | bash
+```
+
+### Manual installation(if preferred)
+
 1. Install the required packages listed above
 2. Clone the latest version of the repository using the following command:
 ```bash
@@ -44,6 +55,12 @@ sudo ln -s /opt/php-deploykit/run.sh /usr/local/bin/php-deploykit
 From now on, when instructed to "run php-deploykit", execute the run.sh script from its installation location. If you created a symlink into PATH, you can run php-deploykit (or the name you chose). Otherwise run the script using the full path to the run.sh file.
 
 ## Update steps
+
+### If installed with the installer
+
+Re-run the installation script at [automatic installation](#automatic-installation-recommended)
+
+### If installed manually
 
 To update php-deploykit, simply pull the latest changes from the repository. If you installed it globally, make sure to pull the changes in the installation directory (eg. /opt/php-deploykit if you followed the example above). If you did not install it globally, pull the changes in the directory where you cloned the repository.
 
