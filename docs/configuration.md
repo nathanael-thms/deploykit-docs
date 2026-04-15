@@ -47,6 +47,10 @@ cp .env.example .env
 
 - `SYMLINK_DEPLOYMENT_GIT_PATH`: Relevant only for symlink deployment; this tells the script where to clone the repository. For GitHub, using SSH is recommended, for example: `SYMLINK_DEPLOYMENT_GIT_PATH="git@github.com:user/app.git"`. The script will run a command similar to: `git clone --branch "<GIT_BRANCH>" --depth 1 git@github.com:user/app.git "<APP_DIR>/releases/<timestamp>"`
 
+- `PRE_FLIGHT_CHECKS`:  A `true`/`false` variable relevant only for both deployment types. When `true`, the script automatically performs pre flight checks as described in [pre-flight checks](index.md#pre-flight-checks)
+
+- `MIN_STORAGE_GB`: Specifies the npm command to run. This can be omitted if `PRE_FLIGHT_CHECKS="false"`; if present but `PRE_FLIGHT_CHECKS="false"`, it will be ignored. Specifies how much storage to check for in pre flight checks as described in [pre-flight checks](index.md#pre-flight-checks)
+
 - `AUTO_CLEANUP`: A `true`/`false` variable relevant only for symlink deployment. When `true`, the script automatically cleans up old releases, keeping the latest `KEEP_RELEASES` releases.
 
 - `KEEP_RELEASES`: This variable, only relevant for symlink deployment and when `AUTO_CLEANUP="true"` tells the auto cleanup script to keep the latest `KEEP_RELEASES` releases

@@ -9,6 +9,28 @@ php-deploykit is a project currently in development that allows deployment of PH
 !!! warning
     Use in production environments at your own risk, but it is not yet recommended. Breaking changes may occur before the v1.0.0 release.
 
+## Features
+
+- Zero downtime deployments (symlink method)
+- Easy rollbacks (symlink method)
+- Auto migration to symlink
+- Automatic webhook support for GitHub, GitLab, and Bitbucket
+- View if the deployment passed, failed or is in progress just by checking on the GitHub commit page(if using GitHub and enabled)
+- Logging system
+- Easy log viewing, see at a glance which deployments failed and which succeeded(color coded), and view the logs for each deployment without manually opening the log files
+- Automatic cleanup of old releases, keeping the latest releases specified with `KEEP_RELEASES` in .env(if enabled)
+- Easy configuration with .env file
+- Robust pre-flight checks
+- Open source and free to use
+
+## Supported frameworks
+
+php-deploykit currently only supports Laravel, but support for other frameworks will be added in the future. If you want to contribute support for your favorite framework, feel free to open a pull request.
+
+--------------
+
+What is below from here is a bit like an other page, it specifies all the things that don't really fit into other categories
+
 ## Classical deployment
 
 In this method, the deployment script will change to the application directory, specified with `APP_DIR` in .env, run git pull(if enabled) and all the other necessary steps to update the app. This method is not recommended because it can cause downtime during deployment. Also, if the deployment fails, the app will be left in a broken state until the next deployment.
@@ -23,19 +45,12 @@ In this method, a new directory is made at `APP_DIR`/releases/timestamp, then gi
 
 By default, only the files in the repository are deployed, but you can make other files or directories persistent across deployments by moving them to `APP_DIR`/shared and creating a symlink to them in the deployment script. For example, if you want to make the `storage` directory persistent, you would move it to `APP_DIR`/shared/storage and redeploy the application to symlink it automatically.
 
-## Features
+### Pre-flight checks
 
-- Zero downtime deployments (symlink method)
-- Easy rollbacks (symlink method)
-- Auto migration to symlink
-- Automatic webhook support for GitHub, GitLab, and Bitbucket
-- View if the deployment passed, failed or is in progress just by checking on the GitHub commit page(if using GitHub and enabled)
-- Logging system
-- Easy log viewing, see at a glance which deployments failed and which succeeded(color coded), and view the logs for each deployment without manually opening the log files
-- Automatic cleanup of old releases, keeping the latest releases specified with `KEEP_RELEASES` in .env(if enabled)
-- Easy configuration with .env file
-- Open source and free to use
+php-deploykit can execute pre flight checks to make scripts 'fail-fast'. These generally take less than 2 seconds to execute and are executed on every deployment if `PRE_FLIGHT_CHECKS` is set to true in .env. They check the following
 
-## Supported frameworks
+- Ensures necessary commands are present on the system
+- Checks you have write permission to `APP_DIR`
+- Checks you have the space specified by `MIN_STORAGE_GB` in .env
 
-php-deploykit currently only supports Laravel, but support for other frameworks will be added in the future. If you want to contribute support for your favorite framework, feel free to open a pull request.
+It is strongly recommended to enable these in production environments.
