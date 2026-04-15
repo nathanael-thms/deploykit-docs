@@ -10,11 +10,11 @@ php-deploykit aims to use as few packages as possible beyond the coreutils inclu
 
 - PHP(obviously)
 - Composer
-- git (if using the symlink deployment method or git pull in classical method)
+- git (if using the symlink deployment method or git pull in classical method and for installer script)
 - Node.js/npm (if using the npm related step in the deployment script)
-- rsync (used for migration to symlink method)
+- rsync (used for migration to symlink method and auto installer script)
 - SSH (if you clone the repository using SSH, otherwise it is not required)
-- python3 (currently the webhook server is written in python)
+- python3 (currently the webhook server is written in python. and GitHub API calls in installer script)
 
 All scripts use /bin/bash and /usr/bin/env python3; make sure they are present
 
@@ -22,12 +22,15 @@ All scripts use /bin/bash and /usr/bin/env python3; make sure they are present
 
 ### Automatic installation (recommended)
 
-The recommended installation method is to use the install.sh script, which will automatically install php-deploykit and create a symlink to run.sh in /usr/local/bin. This allows you to run php-deploykit from anywhere without having to specify the full path to the run.sh script. To install, run the following command from the parent directory of where you want to install php-deploykit:
+First, install the required packages
+
+Then, use the install.sh script, which will automatically install php-deploykit and create a symlink to run.sh in /usr/local/bin. This allows you to run php-deploykit from anywhere without having to specify the full path to the run.sh script. To install, run the following command from the parent directory of where you want to install php-deploykit:
 !!! note
     This installer is interactive and needs user input. Runs sudo scripts. May prompt for password. You may open install.sh in the GitHub repository to review it before running the installer if you have any concerns.
 
 !!! note
     If you run this script too many times an hour, the GitHub API will hit rate limiting
+    
 ```bash
 curl -sSL https://raw.githubusercontent.com/nathanael-thms/php-deploykit/refs/heads/main/install.sh | bash
 ```
