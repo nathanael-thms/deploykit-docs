@@ -6,8 +6,8 @@ icon: lucide/house
 
 php-deploykit is a project currently in development that allows deployment of PHP apps in two ways: classical and symlink (recommended) on Linux servers.
 
-!!! warning
-    Use in production environments at your own risk, but it is not yet recommended. Breaking changes may occur before the v1.0.0 release.
+!!! info
+    v1.0.0-rc.1 has been released, use at own risk, after a week of successful testing, v1.0.0 ill be released
 
 ## Features
 
