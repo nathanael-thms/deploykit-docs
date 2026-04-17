@@ -55,6 +55,7 @@ nav = [
   { "Logging" = "logging.md" },
   { "Webhook Listener" = "webhook.md" },
   { "Utilities" = "utilities.md" },
+  { "Contributing" = "contributing.md" },
   { "License" = "license.md" }
 ]
 
