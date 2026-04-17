@@ -8,6 +8,9 @@
 
 [project]
 
+repo_url = "https://github.com/nathanael-thms/php-deploykit"
+repo_name = "nathanael-thms/php-deploykit"
+
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
@@ -271,8 +274,9 @@ features = [
 # - https://zensical.org/docs/setup/logo-and-icons
 # - https://github.com/zensical/ui/tree/master/dist/.icons
 # ----------------------------------------------------------------------------
-#[project.theme.icon]
+[project.theme.icon]
 #logo = "lucide/smile"
+repo = "fontawesome/brands/github"
 
 # ----------------------------------------------------------------------------
 # In the "font" subsection you can configure the fonts used. By default, fonts
