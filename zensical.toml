@@ -52,6 +52,7 @@ nav = [
   { "Install/Update" = "installation.md" },
   { "Configuration" = "configuration.md" },
   { "Usage" = "usage.md" },
+  { "Deployment" = "deployment.md" },
   { "Logging" = "logging.md" },
   { "Webhook Listener" = "webhook.md" },
   { "Utilities" = "utilities.md" },
