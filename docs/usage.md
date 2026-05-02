@@ -7,6 +7,9 @@ icon: lucide/terminal
 !!! info
     php-deploykit as a command means the run.sh script from its installation location. If you created a symlink into PATH, php-deploykit (or the name you chose). Otherwise the script using the full path to the run.sh file.
 
+!!! danger
+    Do not run php-deploykit as root. It is recommended to run it as the same user that owns the app files, normal deployment commands do not require sudo permissions, however, the service install command for example require a user with sudo privileges. Running as root can cause permission issues with the deployed files and pose security risks.
+
 ## Running with flags
 
 Available flags for the `php-deploykit` command:
@@ -50,6 +53,9 @@ This starts the migration to symlink deployment as described in [Migration to sy
 This reverts to a previous deployment when using symlink deployment, as described in [Reverting to a previous deployment](utilities.md#revert-to-a-previous-deployment). It calls `utilities/revert_to_previous_deployment.sh`.
 
 ### Option 4/first
+
+!!! warning
+    This runs git pull, so make sure you have first manually cloned the repo(unless using symlink)
 
 Performs the same actions as option 1 but ensures that the app-down command (for example `php artisan down`) is not run in classical deployment.
 
