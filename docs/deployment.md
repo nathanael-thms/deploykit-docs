@@ -17,7 +17,7 @@ You deploy the application by running `php-deploykit --deploy`, for information 
 You specify this via the `SYMLINK_DEPLOYMENT` variable in .env, if true, it will use symlink, if false, it will use classical
 
 !!! warning
-    Do not set this to true unless symlink deployment is actually set up (that is, current and releases directories exist). You will most likely also want a shared directory.
+    Do not set this to true unless symlink deployment is actually set up (that is, the releases directory exists). You will most likely also want a shared directory. 
 
 ### Classical deployment
 
