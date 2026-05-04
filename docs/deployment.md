@@ -54,6 +54,44 @@ This really only exists so you can drop your code into the app directory, run yo
 
 In this method, a new directory is made at `APP_DIR`/releases/timestamp, then git will clone the repository specified with `SYMLINK_DEPLOYMENT_GIT_PATH` in .env to a depth of 1 into it, then change into the new directory and run all the necessary steps to prepare the app for deployment. If everything goes well, the `APP_DIR`/current symlink will be updated to point to the new release. This method is recommended because it allows for zero downtime deployments and easy rollbacks in case of failure.
 
+### Steps run
+
+#### Laravel
+
+1. Create a new release directory at `APP_DIR/releases/timestamp`
+2. cd to the new release directory
+3. Run the [before changes custom script](#before-changes)
+4. Run `git clone --branch "$GIT_BRANCH" --depth 1 "$SYMLINK_DEPLOYMENT_GIT_PATH" "$NEW_RELEASE_DIR"`
+5. Symlink all files/directories in shared to the new release folder, overwriting anything existing
+6. cd to the new release directory
+7. If `RUN_NPM` is enabled, run `npm install` and `npm run $NPM_COMMAND`
+8. Run `composer install --no-dev --optimize-autoloader --no-interaction`
+9. If `MIGRATE` is enabled, run `php artisan migrate --force`
+10. If `OPTIMIZE` is enabled, run `php artisan optimize`
+11. Run the [before linking custom script](#before-linking-symlink-mode-only)
+12. Run `ln -sfn "$NEW_RELEASE_DIR" "$APP_DIR/current"`
+13. cd to $APP_DIR/current
+14. Run [after changes custom script](#after-changes)
+15. If `AUTO_CLEANUP` is enabled, run `project_root/utilities/clean_up_releases.sh` and pass `KEEP_RELEASES`
+
+#### Symfony
+
+1. Create a new release directory at `APP_DIR/releases/timestamp`
+2. cd to the new release directory
+3. Run the [before changes custom script](#before-changes)
+4. Run `git clone --branch "$GIT_BRANCH" --depth 1 "$SYMLINK_DEPLOYMENT_GIT_PATH" "$NEW_RELEASE_DIR"`
+5. Symlink all files/directories in shared to the new release folder, overwriting anything existing
+6. cd to the new release directory
+7. If `RUN_NPM` is enabled, run `npm install` and `npm run $NPM_COMMAND`
+8. Run `composer install --no-dev --optimize-autoloader --no-interaction`
+9. If `MIGRATE` is enabled, run `php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration`
+10. If `OPTIMIZE` is enabled, run `php bin/console cache:clear --no-warmup --quiet`, `php bin/console cache:warm --quiet` and `php bin/console cache:warmup --env=prod`
+11. Run the [before linking custom script](#before-linking-symlink-mode-only)
+12. Run `ln -sfn "$NEW_RELEASE_DIR" "$APP_DIR/current"`
+13. cd to $APP_DIR/current
+14. Run [after changes custom script](#after-changes)
+15. If `AUTO_CLEANUP` is enabled, run `project_root/utilities/clean_up_releases.sh` and pass `KEEP_RELEASES`
+
 ### Setup
 
 To set symlink deployment up, just create the `releases` directory in `APP_DIR`, and optionally a `shared` directory if you want to use persistent files/directories, then run a deployment with `SYMLINK_DEPLOYMENT` set to true.
