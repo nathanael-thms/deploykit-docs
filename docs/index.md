@@ -18,8 +18,12 @@ php-deploykit is a project allows deployment of PHP apps in two ways: classical 
 - Automatic cleanup of old releases, keeping the latest releases specified with `KEEP_RELEASES` in .env(if enabled)
 - Easy configuration with .env file
 - Robust pre-flight checks
+- Run your own custom commands at 3 points in deployment
 - Open source and free to use
 
 ## Supported frameworks
 
-php-deploykit currently only supports Laravel, but support for other frameworks will be added in the future. If you want to contribute support for your favorite framework, feel free to open a pull request.
+php-deploykit currently supports Laravel and Symfony, but support for other frameworks may be added in the future. If you want to contribute support for your favorite framework, feel free to open a pull request.
+
+!!! note
+    Symfony support and custom commands apply only to >v1.1.0
