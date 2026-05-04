@@ -23,11 +23,11 @@ cp .env.example .env
 
 - `GIT_BRANCH`: This variable is relevant whether you are using classical or symlink. In classical, it specifies which branch to pull from, in symlink, it specifies which branch to clone
 
-- `FRAMEWORK`: Specifies which PHP framework the app uses. Currently only Laravel is supported; Symfony support is planned.
+- `FRAMEWORK`: Specifies which PHP framework the app uses. Currently only Laravel and Symfony are supported. For laravel, set `FRAMEWORK="laravel"`, for symfony, set `FRAMEWORK="symfony"`. This variable is used to determine which deployment script to run, and which commands to run in the deployment script.
 
-- `MIGRATE`: A `true`/`false` variable relevant for both classical and symlink deployments. When `true`, the deployment script runs the migration command (for example, `php artisan migrate`).
+- `MIGRATE`: A `true`/`false` variable relevant for both classical and symlink deployments. When `true`, the deployment script runs the migration command relevant for your framework (for example, `php artisan migrate` or `php bin/console doctrine:migrations:migrate`).
 
-- `OPTIMIZE`: A `true`/`false` variable relevant for both deployment types. When `true`, the deployment script runs the optimization command (for example, `php artisan optimize`).
+- `OPTIMIZE`: A `true`/`false` variable relevant for both deployment types. When `true`, the deployment script runs the optimization command/s relevant for your framework (for example, `php artisan optimize` or `php bin/console cache:clear --no-warmup --quiet, php bin/console cache:warm --quiet and php bin/console cache:warmup --env=prod`).
 
 - `RUN_NPM`: A `true`/`false` variable relevant for both deployment types. When `true`, the deployment script runs an npm command specified by `NPM_COMMAND`.
 
@@ -40,10 +40,14 @@ cp .env.example .env
 - `DOWN_APP`: A `true`/`false` variable relevant only for classical deployment. When `true`, the deployment script runs the command to put the app down before deployment and bring it back up on success (for example, `php artisan down` && `php artisan up`). symlink deployment is zero-downtime, so this is not used there.
 !!! warning
     If any part of the script fails while the app is down, it will remain down. You must manually bring it back up unless `BRING_APP_UP_ON_FAILURE="true"`.
+!!! info
+    Not supported for Symfony
 
 - `BRING_APP_UP_ON_FAILURE`: A `true`/`false` variable relevant only for classical deployment when `DOWN_APP="true"`. When `true`, the deployment script will attempt to bring the app back up if the main deployment process fails and the app had been put down (for example, `php artisan up`). This is not used for symlink deployments.
 !!! Danger
     This is strongly discouraged: if bringing the app back up fails during a partially completed deployment, it could expose a broken application to the public and create security risks This is one reason symlink deployments are preferable: a failed deployment will not be made public.
+!!! info
+    Not supported for Symfony
 
 - `SYMLINK_DEPLOYMENT_GIT_PATH`: Relevant only for symlink deployment; this tells the script where to clone the repository. For GitHub, using SSH is recommended, for example: `SYMLINK_DEPLOYMENT_GIT_PATH="git@github.com:user/app.git"`. The script will run a command similar to: `git clone --branch "<GIT_BRANCH>" --depth 1 git@github.com:user/app.git "<APP_DIR>/releases/<timestamp>"`
 
