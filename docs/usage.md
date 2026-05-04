@@ -57,7 +57,7 @@ This reverts to a previous deployment when using symlink deployment, as describe
 !!! warning
     This runs git pull, so make sure you have first manually cloned the repo(unless using symlink)
 
-Performs the same actions as option 1 but ensures that the app-down command (for example `php artisan down`) is not run in classical deployment.
+Performs the same actions as option 1 but ensures that the app-down command (for example `php artisan down`) is not run in classical deployment. Irrelevant for symfony
 
 ### Option 5/cleanup
 
