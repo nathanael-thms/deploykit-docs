@@ -41,13 +41,13 @@ cp .env.example .env
 !!! warning
     If any part of the script fails while the app is down, it will remain down. You must manually bring it back up unless `BRING_APP_UP_ON_FAILURE="true"`.
 !!! info
-    Not supported for Symfony
+    Not supported for Symfony, but see the [custom commands](deployment.md#custom-commands) section, you may use these to configure a custom workaround
 
 - `BRING_APP_UP_ON_FAILURE`: A `true`/`false` variable relevant only for classical deployment when `DOWN_APP="true"`. When `true`, the deployment script will attempt to bring the app back up if the main deployment process fails and the app had been put down (for example, `php artisan up`). This is not used for symlink deployments.
 !!! Danger
     This is strongly discouraged: if bringing the app back up fails during a partially completed deployment, it could expose a broken application to the public and create security risks This is one reason symlink deployments are preferable: a failed deployment will not be made public.
 !!! info
-    Not supported for Symfony
+    Not supported for Symfony, but see the [custom commands](deployment.md#custom-commands) section, you may use these to configure a custom workaround
 
 - `SYMLINK_DEPLOYMENT_GIT_PATH`: Relevant only for symlink deployment; this tells the script where to clone the repository. For GitHub, using SSH is recommended, for example: `SYMLINK_DEPLOYMENT_GIT_PATH="git@github.com:user/app.git"`. The script will run a command similar to: `git clone --branch "<GIT_BRANCH>" --depth 1 git@github.com:user/app.git "<APP_DIR>/releases/<timestamp>"`
 
