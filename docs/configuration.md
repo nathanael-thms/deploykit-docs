@@ -17,7 +17,7 @@ cp .env.example .env
     If you are using symlink deployment, this should not include current. For example, use /var/www/app rather than /var/www/app/current.
 - `SYMLINK_DEPLOYMENT`: Set to `true` or `false`. When `true`, the script uses symlink deployment; when `false`, it uses classical deployment.
 !!! warning
-    Do not set this to `true` unless symlink deployment is actually set up (that is, `current` and `releases` directories exist). You will most likely also want a `shared` directory.
+    Do not set this to `true` unless symlink deployment is actually set up (that is, the `releases` directory exists). You will most likely also want a `shared` directory.
 
 - `GIT_PULL`: A `true`/`false` variable relevant only for classical deployment; it is ignored for symlink deployments. It will usually be `true`, since there is currently no other automated method to retrieve code.
 
