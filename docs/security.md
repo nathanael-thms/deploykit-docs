@@ -8,6 +8,7 @@ icon: lucide/shield-check
 
 | Version | Supported                 |
 | ------- | --------------------------|
+| 1.1.x   | :fontawesome-solid-check: |
 | 1.0.x   | :fontawesome-solid-check: |
 | < 1.0   | :fontawesome-solid-xmark: |
 
