@@ -46,9 +46,10 @@ This really only exists so you can drop your code into the app directory, run yo
 3. If `GIT_PULL` is enabled, run `git fetch --all --prune`, `git checkout -B "$TARGET_BRANCH" "origin/$TARGET_BRANCH"` and `git clean -fdelse`
 4. If `RUN_NPM` is enabled, run `npm install` and `npm run $NPM_COMMAND`
 5. Run `composer install --no-dev --optimize-autoloader --no-interaction`
-6. If `MIGRATE` is enabled, run `php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration`
-7. If `OPTIMIZE` is enabled, run `php bin/console cache:clear --no-warmup --quiet`, `php bin/console cache:warm --quiet` and `php bin/console cache:warmup --env=prod`
-8. Run [after changes custom script](#after-changes) and cd back to `APP_DIR`
+6. Check for `importmap.php`, if present, run `php bin/console importmap:install --no-interaction` and `php bin/console asset-map:compile --no-interaction`
+7. If `MIGRATE` is enabled, run `php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration`
+8. If `OPTIMIZE` is enabled, run `php bin/console cache:clear --no-warmup --quiet`, `php bin/console cache:warm --quiet` and `php bin/console cache:warmup --env=prod`
+9. Run [after changes custom script](#after-changes) and cd back to `APP_DIR`
 
 ## Symlink deployment (recommended)
 
@@ -84,13 +85,14 @@ In this method, a new directory is made at `APP_DIR`/releases/timestamp, then gi
 6. cd to the new release directory
 7. If `RUN_NPM` is enabled, run `npm install` and `npm run $NPM_COMMAND`
 8. Run `composer install --no-dev --optimize-autoloader --no-interaction`
-9. If `MIGRATE` is enabled, run `php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration`
-10. If `OPTIMIZE` is enabled, run `php bin/console cache:clear --no-warmup --quiet`, `php bin/console cache:warm --quiet` and `php bin/console cache:warmup --env=prod`
-11. Run the [before linking custom script](#before-linking-symlink-mode-only)
-12. Run `ln -sfn "$NEW_RELEASE_DIR" "$APP_DIR/current"`
-13. cd to $APP_DIR/current
-14. Run [after changes custom script](#after-changes)
-15. If `AUTO_CLEANUP` is enabled, run `project_root/utilities/clean_up_releases.sh` and pass `KEEP_RELEASES`
+9. Check for `importmap.php`, if present, run `php bin/console importmap:install --no-interaction` and `php bin/console asset-map:compile --no-interaction`
+10. If `MIGRATE` is enabled, run `php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration`
+11. If `OPTIMIZE` is enabled, run `php bin/console cache:clear --no-warmup --quiet`, `php bin/console cache:warm --quiet` and `php bin/console cache:warmup --env=prod`
+12. Run the [before linking custom script](#before-linking-symlink-mode-only)
+13. Run `ln -sfn "$NEW_RELEASE_DIR" "$APP_DIR/current"`
+14. cd to $APP_DIR/current
+15. Run [after changes custom script](#after-changes)
+16. If `AUTO_CLEANUP` is enabled, run `project_root/utilities/clean_up_releases.sh` and pass `KEEP_RELEASES`
 
 ### Setup
 
