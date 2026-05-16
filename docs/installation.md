@@ -40,7 +40,7 @@ curl -sSL https://raw.githubusercontent.com/nathanael-thms/php-deploykit/refs/he
 1. Install the required packages listed above
 2. Clone the latest version of the repository using the following command:
 ```bash
-git clone --branch v1.0.1 --depth 1 https://github.com/nathanael-thms/php-deploykit.git
+git clone --branch v1.1.0 --depth 1 https://github.com/nathanael-thms/php-deploykit.git
 ```
 3. Ensure run.sh is executable, in the directory where you cloned the repository, run:
 ```bash
@@ -77,5 +77,5 @@ cd /opt/php-deploykit
 # cd ~/php-deploykit
 
 git fetch --tags --depth=1
-git checkout v1.0.1
+git checkout v1.1.0
 ```
